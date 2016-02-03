@@ -16,19 +16,17 @@ namespace WindowsFormsApplicationTest
 {
     public partial class Form1 : Form
     {
+        private OAuthBroker broker;
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private async void Form1_Load(object sender, EventArgs e)
-        {
-            var broker =
+            broker =
                 new ags.OAuth.OAuthBroker().RegisterClient(new ConsumerInfo("dYhyGEEA4OT6wR4LJn7NC5bhhUP2ISaBxw234CiW",
                     "N4Gi8a5x8yQ8TuHnKOqPYroeRN63Mmh9k1l5QVxA", "http://www.bing.com"));
-            GetForm();
-            await GetValue(broker);
+           ShowForm.Show(ref broker);
         }
+
+        
 
         private static async Task GetValue(OAuthBroker broker)
         {
@@ -39,9 +37,6 @@ namespace WindowsFormsApplicationTest
             await broker.GetAccessTokenAsync(broker.Token);
         }
 
-        public static void GetForm()
-        {
-            ShowForm.Show();
-        }
+       
     }
 }

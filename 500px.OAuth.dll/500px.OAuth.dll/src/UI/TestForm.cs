@@ -22,10 +22,17 @@ namespace OAuth.UI
         public TestForm Navigate(string url)
         {
             webBrowser1.Navigate(url);
+            this.ShowDialog();
+            return this;
         }
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void TestForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
