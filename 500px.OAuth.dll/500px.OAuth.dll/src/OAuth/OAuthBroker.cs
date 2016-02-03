@@ -238,13 +238,13 @@ namespace ags.OAuth
                 switch (a[0])
                 {
                     case "oauth_token":
-                        AccessToken.Token = a[1];
+                        Token.Token = a[1];
                         break;
                     case "oauth_token_secret":
-                        AccessToken.Secret = a[1];
+                        Token.Secret = a[1];
                         break;
                     case "oauth_verifier":
-                        AccessToken.Verifier = a[1];
+                        Token.Verifier = a[1];
                         break;
                 }
             }

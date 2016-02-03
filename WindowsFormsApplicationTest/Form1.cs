@@ -18,16 +18,17 @@ namespace WindowsFormsApplicationTest
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             var broker =
                 new ags.OAuth.OAuthBroker().RegisterClient(new ConsumerInfo("dYhyGEEA4OT6wR4LJn7NC5bhhUP2ISaBxw234CiW",
                     "N4Gi8a5x8yQ8TuHnKOqPYroeRN63Mmh9k1l5QVxA", "http://www.bing.com"));
-            broker.GetRequestTokenAsync();
+            await broker.GetRequestTokenAsync();
             broker.GetAutorizeTokenAsync();
             var str = broker.GetAuthorizationUrl(broker.Token);
             var form = new UserAuthForm(str, ref broker);
-            form.Show();
+            form.ShowDialog();
+            await broker.GetAccessTokenAsync(broker.Token);
         }
     }
 }
