@@ -23,20 +23,8 @@ namespace WindowsFormsApplicationTest
             broker =
                 new ags.OAuth.OAuthBroker().RegisterClient(new ConsumerInfo("dYhyGEEA4OT6wR4LJn7NC5bhhUP2ISaBxw234CiW",
                     "N4Gi8a5x8yQ8TuHnKOqPYroeRN63Mmh9k1l5QVxA", "http://www.bing.com"));
-           ShowForm.Show(ref broker);
+           Authentiphication.Show(ref broker);
         }
-
-        
-
-        private static async Task GetValue(OAuthBroker broker)
-        {
-            await broker.GetRequestTokenAsync();
-            var str =broker.AuthorizeTokenAsync();
-            var form = new UserAuthForm(str, ref broker);
-            form.ShowDialog();
-            await broker.GetAccessTokenAsync(broker.Token);
-        }
-
-       
+     
     }
 }

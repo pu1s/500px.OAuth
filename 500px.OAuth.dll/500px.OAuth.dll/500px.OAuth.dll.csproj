@@ -55,17 +55,17 @@
     <Compile Include="src\OAuth\OAuthParam.cs" />
     <Compile Include="src\OAuth\OAuthToken.cs" />
     <Compile Include="src\OAuth\Verifier.cs" />
-    <Compile Include="src\UI\ShowForm.cs" />
-    <Compile Include="src\UI\TestForm.cs">
+    <Compile Include="src\UI\Authentiphication.cs" />
+    <Compile Include="src\UI\UserAuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\UI\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <Compile Include="src\UI\UserAuthForm.Designer.cs">
+      <DependentUpon>UserAuthForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="src\UI\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\UI\UserAuthForm.resx">
+      <DependentUpon>UserAuthForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
