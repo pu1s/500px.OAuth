@@ -20,13 +20,16 @@ namespace WindowsFormsApplicationTest
             webBrowser1.DocumentCompleted += WebBrowser1_DocumentCompleted;
         }
 
-        private OAuthBroker _authBroker;
+        private readonly OAuthBroker _authBroker;
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            {
+                if(sender is WebBrowser)
 #if DEBUG
-            Debug.WriteLine("Doc coplete: {0}", e.Url);
-            _authBroker.GetVerifer(e.Url);
+                    Debug.WriteLine("Doc coplete: {0}", e.Url);
 #endif
+                _authBroker.GetVerifier(e.Url);
+            }
         }
 
         public UserAuthForm(string url, ref OAuthBroker broker):this()

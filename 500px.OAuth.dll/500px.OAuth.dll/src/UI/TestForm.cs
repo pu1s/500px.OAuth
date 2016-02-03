@@ -1,20 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ags.OAuth;
 
-namespace OAuth.src.UI
+namespace OAuth.UI
 {
     public partial class TestForm : Form
     {
+        private OAuthBroker _broker;
+
         public TestForm()
         {
             InitializeComponent();
+            webBrowser1.DocumentCompleted += WebBrowser1_DocumentCompleted;
+        }
+
+        public TestForm(ref OAuthBroker broker) : this()
+        {
+            _broker = broker;
+        }
+
+        public TestForm Navigate(string url)
+        {
+            webBrowser1.Navigate(url);
+        }
+        private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

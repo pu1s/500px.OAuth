@@ -3,5 +3,5 @@ C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\bi
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.dll.csprojResolveAssemblyReference.cache
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.dll
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.pdb
-C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\OAuth.src.OAuth.UserAuthForm.resources
+C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\OAuth.UI.TestForm.resources
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.dll.csproj.GenerateResource.Cache

@@ -1,4 +1,4 @@
-﻿namespace OAuth.src.UI
+﻿namespace OAuth.UI
 {
     partial class TestForm
     {

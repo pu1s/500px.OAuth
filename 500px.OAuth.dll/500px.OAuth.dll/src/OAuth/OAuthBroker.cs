@@ -6,11 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
-using ags.Core;
 using System.Windows.Forms;
-
+using ags.Core;
 
 namespace ags.OAuth
 {
@@ -44,8 +42,8 @@ namespace ags.OAuth
         /// <summary>
         ///     Возвращает состояние аутентификации
         /// </summary>
-        public bool IsAuth => !string.IsNullOrWhiteSpace(AccessToken.Secret) &&
-                              !string.IsNullOrWhiteSpace(AccessToken.Token) &&
+        public bool IsAuth => !string.IsNullOrWhiteSpace(AccessToken.Secret) ||
+                              !string.IsNullOrWhiteSpace(AccessToken.Token) ||
                               !string.IsNullOrWhiteSpace(AccessToken.Verifier);
 
         /// <summary>
@@ -226,11 +224,10 @@ namespace ags.OAuth
             return AccessToken;
         }
 
-        public OAuthBroker GetVerifer(Uri url) // подумать над сигнатурой
+        public OAuthBroker GetVerifier(Uri url) // подумать над сигнатурой
         {
             var urlpart = url.OriginalString.Split('?');
-            if(urlpart[0]  != "https://api.500px.com/v1/oauth/authorize") return this;
-
+            if (urlpart[0] == OAuthConst.AuthorizeUrl) return this;
             var param = url.Query;
             var part = param.Split('&');
             foreach (var a in part.Select(s => s.Split('=')))
@@ -251,9 +248,12 @@ namespace ags.OAuth
             return this;
         }
 
-        public  void GetAutorizeTokenAsync()
+        public string AuthorizeTokenAsync()
         {
-            var url = GetAuthorizationUrl(Token);
+            Token = new OAuthToken();
+            Task.Run(async
+                () => { await GetRequestTokenAsync(); });
+            return (GetAuthorizationUrl(Token));
         }
     }
 }
