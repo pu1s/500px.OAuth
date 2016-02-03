@@ -228,7 +228,8 @@ namespace ags.OAuth
 
         public OAuthBroker GetVerifer(Uri url) // подумать над сигнатурой
         {
-            if (url.AbsoluteUri != "https://api.500px.com/v1/oauth/authorize") return this;
+            var urlpart = url.OriginalString.Split('?');
+            if(urlpart[0]  != "https://api.500px.com/v1/oauth/authorize") return this;
 
             var param = url.Query;
             var part = param.Split('&');
