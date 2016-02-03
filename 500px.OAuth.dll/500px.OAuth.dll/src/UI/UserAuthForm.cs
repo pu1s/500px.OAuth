@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using ags.OAuth;
 
@@ -12,9 +13,10 @@ namespace OAuth.UI
         {
             InitializeComponent();
             webBrowser1.DocumentCompleted += WebBrowser1_DocumentCompleted;
+            Show();
         }
 
-        public UserAuthForm(ref OAuthBroker broker) : this()
+        public UserAuthForm(OAuthBroker broker) : this()
         {
             _broker = broker;
         }
@@ -22,12 +24,14 @@ namespace OAuth.UI
         public UserAuthForm Navigate(string url)
         {
             webBrowser1.Navigate(url);
-            this.ShowDialog();
+            
             return this;
         }
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            throw new NotImplementedException();
+#if DEBUG
+            Debug.WriteLine(e.Url.OriginalString);
+#endif
         }
 
         private void TestForm_Load(object sender, EventArgs e)

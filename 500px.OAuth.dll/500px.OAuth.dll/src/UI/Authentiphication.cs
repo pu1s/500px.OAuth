@@ -7,15 +7,20 @@ using ags.OAuth;
 
 namespace OAuth.UI
 {
-    public static class Authentiphication
+    public class Authentiphication
     {
-        public static void Show(ref OAuthBroker broker)
+        private UserAuthForm form;
+
+        private Authentiphication()
         {
-            
-            OAuthBroker authBroker = broker;
-            broker.Token =Task.Run(async () => { await authBroker.GetRequestTokenAsync(); });
+            form = new UserAuthForm();
+        }
+        public static void UIAuth(ref OAuthBroker broker)
+        {
+            var authBroker = broker;
+            authBroker.Token = Task.Run(async () => await authBroker.GetRequestTokenAsync()).GetAwaiter().GetResult();
+            var form = new UserAuthForm(authBroker).Navigate(authBroker.AuthorizeTokenAsync());
             broker = authBroker;
-            var form = new UserAuthForm(ref broker).Navigate(broker.AuthorizeTokenAsync());
         }
     }
 }
