@@ -1,0 +1,8 @@
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\bin\Debug\ConsoleApplicationTest.exe.config
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\bin\Debug\ConsoleApplicationTest.exe
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\bin\Debug\ConsoleApplicationTest.pdb
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\bin\Debug\500px.OAuth.dll
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\bin\Debug\500px.OAuth.pdb
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\obj\Debug\ConsoleApplicationTest.csprojResolveAssemblyReference.cache
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\obj\Debug\ConsoleApplicationTest.exe
+C:\Users\extensa\Documents\GitHub\500px.OAuth\ConsoleApplicationTest\obj\Debug\ConsoleApplicationTest.pdb

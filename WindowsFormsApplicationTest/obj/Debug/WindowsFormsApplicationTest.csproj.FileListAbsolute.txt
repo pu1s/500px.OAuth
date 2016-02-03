@@ -1,0 +1,12 @@
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\bin\Debug\WindowsFormsApplicationTest.exe.config
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\bin\Debug\WindowsFormsApplicationTest.exe
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\bin\Debug\WindowsFormsApplicationTest.pdb
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\bin\Debug\500px.OAuth.dll
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\bin\Debug\500px.OAuth.pdb
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.csprojResolveAssemblyReference.cache
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.Form1.resources
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.Properties.Resources.resources
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.UserAuthForm.resources
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.csproj.GenerateResource.Cache
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.exe
+C:\Users\extensa\Documents\GitHub\500px.OAuth\WindowsFormsApplicationTest\obj\Debug\WindowsFormsApplicationTest.pdb
