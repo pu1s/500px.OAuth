@@ -8,7 +8,7 @@ namespace OAuth.UI
     {
         private OAuthBroker _broker;
 
-        public TestForm()
+        private TestForm()
         {
             InitializeComponent();
             webBrowser1.DocumentCompleted += WebBrowser1_DocumentCompleted;
