@@ -1,28 +1,33 @@
-﻿namespace ags.Core
+﻿namespace OAuth
 {
-    /// <summary>
-    ///     Перечисление методов HTTP запроса
-    /// </summary>
-    public enum HttpMethods
+    public partial class OAuthBroker
     {
-        /// <summary>
-        ///     POST
-        /// </summary>
-        Post,
+
 
         /// <summary>
-        ///     GET
+        ///     Перечисление методов HTTP запроса
         /// </summary>
-        Get,
+        public enum HttpMethods
+        {
+            /// <summary>
+            ///     POST
+            /// </summary>
+            Post,
 
-        /// <summary>
-        ///     PUT
-        /// </summary>
-        Put,
+            /// <summary>
+            ///     GET
+            /// </summary>
+            Get,
 
-        /// <summary>
-        ///     DELETE
-        /// </summary>
-        Delete
-    };
+            /// <summary>
+            ///     PUT
+            /// </summary>
+            Put,
+
+            /// <summary>
+            ///     DELETE
+            /// </summary>
+            Delete
+        };
+    }
 }

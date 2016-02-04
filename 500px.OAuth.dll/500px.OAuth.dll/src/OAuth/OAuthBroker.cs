@@ -8,14 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ags.Core;
+using OAuth.Core;
 
-namespace ags.OAuth
+namespace OAuth
 {
     /// <summary>
     ///     Объект, представляющий доступ для аутентификации по протоколу OAuth 1.0
     /// </summary>
-    public class OAuthBroker
+    public partial class OAuthBroker
     {
         private ConsumerInfo _consumerInfo;
 

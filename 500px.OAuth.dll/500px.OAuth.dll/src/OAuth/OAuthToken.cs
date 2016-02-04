@@ -1,23 +1,26 @@
-﻿namespace ags.OAuth
+﻿namespace OAuth
 {
-    /// <summary>
-    ///     Токен, используемый при аутентификации
-    /// </summary>
-    public class OAuthToken
+    public partial class OAuthBroker
     {
         /// <summary>
-        ///     Токен
+        ///     Токен, используемый при аутентификации
         /// </summary>
-        public string Token { get; set; }
+        public class OAuthToken
+        {
+            /// <summary>
+            ///     Токен
+            /// </summary>
+            public string Token { get; set; }
 
-        /// <summary>
-        ///     Секрет
-        /// </summary>
-        public string Secret { get; set; }
+            /// <summary>
+            ///     Секрет
+            /// </summary>
+            public string Secret { get; set; }
 
-        /// <summary>
-        ///     Верификатор
-        /// </summary>
-        public string Verifier { get; set; }
+            /// <summary>
+            ///     Верификатор
+            /// </summary>
+            public string Verifier { get; set; }
+        }
     }
 }

@@ -1,58 +1,63 @@
-﻿namespace ags.OAuth
+﻿namespace OAuth
 {
-    /// <summary>
-    ///     Параметры запроса, используемые при OAuth 1.0a аутентификации
-    /// </summary>
-    public static class OAuthParam
+    public partial class OAuthBroker
     {
-        /// <summary>
-        ///     валидный Url
-        /// </summary>
-        public const string Callback = "oauth_callback";
+
 
         /// <summary>
-        ///     ключ приложения
+        ///     Параметры запроса, используемые при OAuth 1.0a аутентификации
         /// </summary>
-        public const string ConsumerKey = "oauth_consumer_key";
+        public static class OAuthParam
+        {
+            /// <summary>
+            ///     валидный Url
+            /// </summary>
+            public const string Callback = "oauth_callback";
 
-        /// <summary>
-        ///     случайная строка 32 бита
-        /// </summary>
-        public const string Nonce = "oauth_nonce";
+            /// <summary>
+            ///     ключ приложения
+            /// </summary>
+            public const string ConsumerKey = "oauth_consumer_key";
 
-        /// <summary>
-        ///     префикс для формирования параметра
-        /// </summary>
-        public const string Prefix = "oauth_";
+            /// <summary>
+            ///     случайная строка 32 бита
+            /// </summary>
+            public const string Nonce = "oauth_nonce";
 
-        /// <summary>
-        ///     подпись
-        /// </summary>
-        public const string Signature = "oauth_signature";
+            /// <summary>
+            ///     префикс для формирования параметра
+            /// </summary>
+            public const string Prefix = "oauth_";
 
-        /// <summary>
-        ///     метод подписывания запроса
-        /// </summary>
-        public const string SignatureMethod = "oauth_signature_method";
+            /// <summary>
+            ///     подпись
+            /// </summary>
+            public const string Signature = "oauth_signature";
 
-        /// <summary>
-        ///     интервал времени в секундах от начала времени Unix до формирования текущего запроса
-        /// </summary>
-        public const string Timestamp = "oauth_timestamp";
+            /// <summary>
+            ///     метод подписывания запроса
+            /// </summary>
+            public const string SignatureMethod = "oauth_signature_method";
 
-        /// <summary>
-        ///     Токен
-        /// </summary>
-        public const string Token = "oauth_token";
+            /// <summary>
+            ///     интервал времени в секундах от начала времени Unix до формирования текущего запроса
+            /// </summary>
+            public const string Timestamp = "oauth_timestamp";
 
-        /// <summary>
-        ///     верификатор
-        /// </summary>
-        public const string Verifier = "oauth_verifier";
+            /// <summary>
+            ///     Токен
+            /// </summary>
+            public const string Token = "oauth_token";
 
-        /// <summary>
-        ///     версия OAuth
-        /// </summary>
-        public const string Version = "oauth_version";
+            /// <summary>
+            ///     верификатор
+            /// </summary>
+            public const string Verifier = "oauth_verifier";
+
+            /// <summary>
+            ///     версия OAuth
+            /// </summary>
+            public const string Version = "oauth_version";
+        }
     }
 }

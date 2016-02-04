@@ -1,6 +1,6 @@
 ﻿namespace OAuth.UI
 {
-    partial class TestForm
+    partial class UserAuthForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,16 +37,16 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(284, 261);
+            this.webBrowser1.Size = new System.Drawing.Size(978, 529);
             this.webBrowser1.TabIndex = 0;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(978, 529);
             this.Controls.Add(this.webBrowser1);
-            this.Name = "TestForm";
+            this.Name = "AuthForm";
             this.Text = "TestForm";
             this.Load += new System.EventHandler(this.TestForm_Load);
             this.ResumeLayout(false);

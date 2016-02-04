@@ -1,29 +1,32 @@
-﻿namespace ags.Core
+﻿namespace OAuth
 {
-    /// <summary>
-    ///     Параметр запроса
-    /// </summary>
-    public class RequestParameter
+    public partial class OAuthBroker
     {
         /// <summary>
-        ///     Конструктор по умолчанию
+        ///     Параметр запроса
         /// </summary>
-        /// <param name="name">имя папаметра</param>
-        /// <param name="value">значение параметра</param>
-        public RequestParameter(string name, string value)
+        public class RequestParameter
         {
-            Name = name;
-            Value = value;
+            /// <summary>
+            ///     Конструктор по умолчанию
+            /// </summary>
+            /// <param name="name">имя папаметра</param>
+            /// <param name="value">значение параметра</param>
+            public RequestParameter(string name, string value)
+            {
+                Name = name;
+                Value = value;
+            }
+
+            /// <summary>
+            ///     Имя параметра
+            /// </summary>
+            public string Name { get; set; }
+
+            /// <summary>
+            ///     Значение параметра
+            /// </summary>
+            public string Value { get; set; }
         }
-
-        /// <summary>
-        ///     Имя параметра
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Значение параметра
-        /// </summary>
-        public string Value { get; set; }
     }
 }
