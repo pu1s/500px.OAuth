@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "500px.OAuth.dll", "500px.OA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplicationTest", "..\WindowsFormsApplicationTest\WindowsFormsApplicationTest.csproj", "{89A46CF0-4ADF-465B-8422-D9B9FCA2ADC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplicationTest", "..\ConsoleApplicationTest\ConsoleApplicationTest.csproj", "{CF1ED926-5273-4B19-B380-15206C3FDDA6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{89A46CF0-4ADF-465B-8422-D9B9FCA2ADC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A46CF0-4ADF-465B-8422-D9B9FCA2ADC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89A46CF0-4ADF-465B-8422-D9B9FCA2ADC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF1ED926-5273-4B19-B380-15206C3FDDA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF1ED926-5273-4B19-B380-15206C3FDDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF1ED926-5273-4B19-B380-15206C3FDDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF1ED926-5273-4B19-B380-15206C3FDDA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
