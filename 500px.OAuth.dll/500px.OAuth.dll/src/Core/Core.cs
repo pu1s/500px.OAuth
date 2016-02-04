@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using OAuth.OAuth;
+using OAuth;
 
 namespace OAuth
 {

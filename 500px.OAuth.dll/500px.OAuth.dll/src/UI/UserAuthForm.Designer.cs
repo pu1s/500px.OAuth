@@ -48,7 +48,6 @@
             this.Controls.Add(this.webBrowser1);
             this.Name = "AuthForm";
             this.Text = "TestForm";
-            this.Load += new System.EventHandler(this.TestForm_Load);
             this.ResumeLayout(false);
 
         }

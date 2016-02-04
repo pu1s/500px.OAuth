@@ -55,7 +55,7 @@
     <Compile Include="src\OAuth\OAuthParam.cs" />
     <Compile Include="src\OAuth\OAuthToken.cs" />
     <Compile Include="src\OAuth\Verifier.cs" />
-    <Compile Include="src\UI\Authentiphication.cs" />
+    <Compile Include="src\UI\Authorization.cs" />
     <Compile Include="src\UI\UserAuthForm.cs">
       <SubType>Form</SubType>
     </Compile>

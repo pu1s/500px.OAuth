@@ -7,23 +7,25 @@ namespace OAuth.UI
     public partial class UserAuthForm : Form
     {
         private OAuthBroker _broker;
+        private string _url;
 
         public UserAuthForm()
         {
             InitializeComponent();
             webBrowser1.DocumentCompleted += WebBrowser1_DocumentCompleted;
-            Show();
+            webBrowser1.ScriptErrorsSuppressed = true;
         }
 
-        public UserAuthForm(OAuthBroker broker) : this()
+        public UserAuthForm(OAuthBroker broker, string url) : this()
         {
             _broker = broker;
+            _url = url;
         }
 
-        public UserAuthForm Navigate(string url)
+        public UserAuthForm Navigate()
         {
-            webBrowser1.Navigate(url);
-            
+            webBrowser1.Navigate(_url);
+            ShowDialog();
             return this;
         }
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -31,11 +33,7 @@ namespace OAuth.UI
 #if DEBUG
             Debug.WriteLine(e.Url.OriginalString);
 #endif
-        }
-
-        private void TestForm_Load(object sender, EventArgs e)
-        {
-            
-        }
+            _broker.GetVerifier(e.Url);
+        } 
     }
 }

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OAuth.Core;
+using OAuth;
 using OAuth.UI;
-using OAuthBroker = OAuth.OAuth.OAuthBroker;
+using OAuthBroker = OAuth.OAuthBroker;
 
 
 namespace WindowsFormsApplicationTest
@@ -19,9 +19,10 @@ namespace WindowsFormsApplicationTest
         public Form1()
         {
             InitializeComponent();
-            var broker = new OAuthBroker().RegisterClient(new ConsumerInfo("dYhyGEEA4OT6wR4LJn7NC5bhhUP2ISaBxw234CiW",
+            var broker = new OAuthBroker().RegisterClient(new OAuth.OAuthBroker.ConsumerInfo("dYhyGEEA4OT6wR4LJn7NC5bhhUP2ISaBxw234CiW",
                 "N4Gi8a5x8yQ8TuHnKOqPYroeRN63Mmh9k1l5QVxA", "http://www.bing.com"));
-           OAuth.UI.OAuthBroker.Authentiphication.UIAuth(ref broker);
+            Authorization.RealiseToken(broker);
+            
         }
      
     }

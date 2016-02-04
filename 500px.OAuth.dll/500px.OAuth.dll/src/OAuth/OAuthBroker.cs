@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OAuth.Core;
+using OAuth;
 
 namespace OAuth
 {
@@ -42,9 +42,8 @@ namespace OAuth
         /// <summary>
         ///     Возвращает состояние аутентификации
         /// </summary>
-        public bool IsAuth => !string.IsNullOrWhiteSpace(AccessToken.Secret) ||
-                              !string.IsNullOrWhiteSpace(AccessToken.Token) ||
-                              !string.IsNullOrWhiteSpace(AccessToken.Verifier);
+        public bool IsAuth => !string.IsNullOrWhiteSpace(AccessToken.Secret) &&
+                              !string.IsNullOrWhiteSpace(AccessToken.Token);
 
         /// <summary>
         ///     Возвращает состояние регистрации клиента
@@ -52,6 +51,8 @@ namespace OAuth
         public bool IsRegistred => !string.IsNullOrWhiteSpace(_consumerInfo.ConsumerKey) &&
                                    !string.IsNullOrWhiteSpace(_consumerInfo.ConsumerSecret) &&
                                    !string.IsNullOrWhiteSpace(_consumerInfo.CallbackUrl);
+
+        public ConsumerInfo Consumer => _consumerInfo;
 
         /// <summary>
         ///     Возвращает или задает список параметров запроса
@@ -109,7 +110,7 @@ namespace OAuth
             };
 
             // подписываем строку запроса
-            var requestUrl = Core.Core.Sign(HttpMethods.Post, OAuthConst.RequestUrl, RequestParameters, _consumerInfo,
+            var requestUrl = Core.Sign(HttpMethods.Post, OAuthConst.RequestUrl, RequestParameters, _consumerInfo,
                 null);
             // инициализируем HTTP Client
             using (var httpClient = new HttpClient())
@@ -170,7 +171,7 @@ namespace OAuth
                 new RequestParameter(OAuthParam.Callback, _consumerInfo.CallbackUrl),
                 new RequestParameter(OAuthParam.Token, requestToken.Token)
             };
-            var resultString = Core.Core.Sign(HttpMethods.Post, OAuthConst.AuthorizeUrl, RequestParameters,
+            var resultString = Core.Sign(HttpMethods.Post, OAuthConst.AuthorizeUrl, RequestParameters,
                 _consumerInfo, requestToken);
 #if DEBUG
             Debug.WriteLine(string.Format("Authorize Url:  {0}", resultString));
@@ -200,7 +201,7 @@ namespace OAuth
                 new RequestParameter(OAuthParam.Token, Token.Token)
             };
 
-            var signature = Core.Core.Sign(HttpMethods.Post, OAuthConst.AccessUrl, RequestParameters, _consumerInfo,
+            var signature = Core.Sign(HttpMethods.Post, OAuthConst.AccessUrl, RequestParameters, _consumerInfo,
                 requestToken);
             using (var client = new HttpClient())
             {
@@ -224,7 +225,7 @@ namespace OAuth
             return AccessToken;
         }
 
-        public OAuthBroker GetVerifier(Uri url) // подумать над сигнатурой
+        public OAuthBroker GetVerifier(Uri url) 
         {
             var urlpart = url.OriginalString.Split('?');
             if (urlpart[0] == OAuthConst.AuthorizeUrl) return this;
@@ -246,14 +247,6 @@ namespace OAuth
                 }
             }
             return this;
-        }
-
-        public string AuthorizeTokenAsync()
-        {
-            Token = new OAuthToken();
-            Task.Run(async
-                () => { await GetRequestTokenAsync(); });
-            return (GetAuthorizationUrl(Token));
         }
     }
 }
