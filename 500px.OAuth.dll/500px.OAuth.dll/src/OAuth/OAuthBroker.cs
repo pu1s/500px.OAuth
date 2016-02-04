@@ -1,4 +1,4 @@
-﻿#define DEBUG_OAUTH
+﻿#define DEBUG
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OAuth;
 
 namespace OAuth
 {
@@ -17,8 +16,6 @@ namespace OAuth
     /// </summary>
     public partial class OAuthBroker
     {
-        private ConsumerInfo _consumerInfo;
-
         /// <summary>
         ///     Конструктор
         /// </summary>
@@ -37,7 +34,7 @@ namespace OAuth
         /// <summary>
         ///     Возвращает AccessToken
         /// </summary>
-        public OAuthToken AccessToken { get; }
+        public OAuthToken AccessToken { get; set; }
 
         /// <summary>
         ///     Возвращает состояние аутентификации
@@ -48,11 +45,14 @@ namespace OAuth
         /// <summary>
         ///     Возвращает состояние регистрации клиента
         /// </summary>
-        public bool IsRegistred => !string.IsNullOrWhiteSpace(_consumerInfo.ConsumerKey) &&
-                                   !string.IsNullOrWhiteSpace(_consumerInfo.ConsumerSecret) &&
-                                   !string.IsNullOrWhiteSpace(_consumerInfo.CallbackUrl);
+        public bool IsRegistred => !string.IsNullOrWhiteSpace(Consumer.ConsumerKey) &&
+                                   !string.IsNullOrWhiteSpace(Consumer.ConsumerSecret) &&
+                                   !string.IsNullOrWhiteSpace(Consumer.CallbackUrl);
 
-        public ConsumerInfo Consumer => _consumerInfo;
+        /// <summary>
+        ///     Возвращает данные пользовательской программы
+        /// </summary>
+        public ConsumerInfo Consumer { get; private set; }
 
         /// <summary>
         ///     Возвращает или задает список параметров запроса
@@ -65,7 +65,7 @@ namespace OAuth
         ///         <code>
         /// ConsumerInfo consumer = new ConsumerInfo("consumerKey", "consumerSecret", "callbackUrl");
         /// OAuthBroker client = new OAuthBroker().RegisterClient("name", consumer);
-        /// </code>
+        ///         </code>
         ///     </example>
         /// </summary>
         /// <param name="consumerInfo">
@@ -80,7 +80,7 @@ namespace OAuth
             try
             {
                 if (consumerInfo.IsEmpty) throw new ArgumentNullException("consumerInfo");
-                _consumerInfo = consumerInfo;
+                Consumer = consumerInfo;
             }
             catch (ArgumentNullException exception)
             {
@@ -92,7 +92,9 @@ namespace OAuth
         /// <summary>
         ///     Получает request token
         /// </summary>
-        /// <returns>задача, получения request token</returns>
+        /// <returns>
+        ///     задача, получения request token
+        /// </returns>
         public async Task<OAuthToken> GetRequestTokenAsync()
         {
             // возвращаемый токен
@@ -101,8 +103,8 @@ namespace OAuth
             RequestParameters?.Clear();
             RequestParameters = new List<RequestParameter>
             {
-                new RequestParameter(OAuthParam.Callback, _consumerInfo.CallbackUrl),
-                new RequestParameter(OAuthParam.ConsumerKey, _consumerInfo.ConsumerKey),
+                new RequestParameter(OAuthParam.Callback, Consumer.CallbackUrl),
+                new RequestParameter(OAuthParam.ConsumerKey, Consumer.ConsumerKey),
                 new RequestParameter(OAuthParam.Nonce, OAuthHelpers.GenerateNonce()),
                 new RequestParameter(OAuthParam.SignatureMethod, OAuthConst.OAuthSignatureMethod),
                 new RequestParameter(OAuthParam.Timestamp, OAuthHelpers.GenerateTimeStamp()),
@@ -110,7 +112,7 @@ namespace OAuth
             };
 
             // подписываем строку запроса
-            var requestUrl = Core.Sign(HttpMethods.Post, OAuthConst.RequestUrl, RequestParameters, _consumerInfo,
+            var requestUrl = Core.Sign(HttpMethods.Post, OAuthConst.RequestUrl, RequestParameters, Consumer,
                 null);
             // инициализируем HTTP Client
             using (var httpClient = new HttpClient())
@@ -168,11 +170,11 @@ namespace OAuth
             RequestParameters?.Clear();
             RequestParameters = new List<RequestParameter>
             {
-                new RequestParameter(OAuthParam.Callback, _consumerInfo.CallbackUrl),
+                new RequestParameter(OAuthParam.Callback, Consumer.CallbackUrl),
                 new RequestParameter(OAuthParam.Token, requestToken.Token)
             };
             var resultString = Core.Sign(HttpMethods.Post, OAuthConst.AuthorizeUrl, RequestParameters,
-                _consumerInfo, requestToken);
+                Consumer, requestToken);
 #if DEBUG
             Debug.WriteLine(string.Format("Authorize Url:  {0}", resultString));
 #endif
@@ -191,8 +193,8 @@ namespace OAuth
             RequestParameters?.Clear();
             RequestParameters = new List<RequestParameter>
             {
-                new RequestParameter(OAuthParam.Callback, _consumerInfo.CallbackUrl),
-                new RequestParameter(OAuthParam.ConsumerKey, _consumerInfo.ConsumerKey),
+                new RequestParameter(OAuthParam.Callback, Consumer.CallbackUrl),
+                new RequestParameter(OAuthParam.ConsumerKey, Consumer.ConsumerKey),
                 new RequestParameter(OAuthParam.Nonce, OAuthHelpers.GenerateNonce()),
                 new RequestParameter(OAuthParam.SignatureMethod, OAuthConst.OAuthSignatureMethod),
                 new RequestParameter(OAuthParam.Timestamp, OAuthHelpers.GenerateTimeStamp()),
@@ -201,7 +203,7 @@ namespace OAuth
                 new RequestParameter(OAuthParam.Token, Token.Token)
             };
 
-            var signature = Core.Sign(HttpMethods.Post, OAuthConst.AccessUrl, RequestParameters, _consumerInfo,
+            var signature = Core.Sign(HttpMethods.Post, OAuthConst.AccessUrl, RequestParameters, Consumer,
                 requestToken);
             using (var client = new HttpClient())
             {
@@ -222,10 +224,21 @@ namespace OAuth
                     }
                 }
             }
+#if DEBUG
+            Debug.Indent();
+            Debug.WriteLineIf(!string.IsNullOrEmpty(AccessToken.Secret) && (!string.IsNullOrEmpty(AccessToken.Token)),
+                string.Format("Access Token: {0}, Secret: {1}", AccessToken.Token, AccessToken.Secret));
+            Debug.Unindent();
+            Debug.WriteLine("Access token complete!");
+#endif
             return AccessToken;
         }
 
-        public OAuthBroker GetVerifier(Uri url) 
+        /// <summary>
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public OAuthBroker GetVerifier(Uri url)
         {
             var urlpart = url.OriginalString.Split('?');
             if (urlpart[0] == OAuthConst.AuthorizeUrl) return this;

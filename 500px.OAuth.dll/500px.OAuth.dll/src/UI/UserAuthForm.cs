@@ -1,39 +1,62 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace OAuth.UI
 {
+    /// <summary>
+    ///     Форма авторизации пользователя
+    /// </summary>
     public partial class UserAuthForm : Form
     {
-        private OAuthBroker _broker;
-        private string _url;
+        private readonly OAuthBroker _broker;
+        private readonly string _url;
 
+        /// <summary>
+        ///     конструктор формы авторизации пользователя
+        /// </summary>
         public UserAuthForm()
         {
             InitializeComponent();
-            webBrowser1.DocumentCompleted += WebBrowser1_DocumentCompleted;
-            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser.DocumentCompleted += WebBrowserDocumentCompleted;
+            webBrowser.ScriptErrorsSuppressed = true;
         }
 
+        /// <summary>
+        ///     перегруженный конструктор формы авторизации пользователя
+        /// </summary>
+        /// <param name="broker">
+        ///     объект авторизации
+        /// </param>
+        /// <param name="url">
+        ///     адрес запроса авторизации пользователя
+        /// </param>
         public UserAuthForm(OAuthBroker broker, string url) : this()
         {
             _broker = broker;
             _url = url;
         }
 
+        /// <summary>
+        ///     Переход к форме авторизации
+        /// </summary>
+        /// <returns>
+        ///     объект формы авторизации
+        /// </returns>
         public UserAuthForm Navigate()
         {
-            webBrowser1.Navigate(_url);
+            webBrowser.Navigate(_url);
+            // открываем модальное окно
             ShowDialog();
+
             return this;
         }
-        private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+
+        private void WebBrowserDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 #if DEBUG
             Debug.WriteLine(e.Url.OriginalString);
 #endif
             _broker.GetVerifier(e.Url);
-        } 
+        }
     }
 }

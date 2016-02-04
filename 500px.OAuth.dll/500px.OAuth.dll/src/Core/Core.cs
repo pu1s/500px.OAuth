@@ -5,24 +5,34 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using OAuth;
 
 namespace OAuth
 {
     public partial class OAuthBroker
     {
-
-
-        public class Core
+        /// <summary>
+        ///     Основные функции реализации протокола OAuth 1.0
+        /// </summary>
+        protected class Core
         {
             /// <summary>
             ///     Подписывает запрос
             /// </summary>
-            /// <param name="httpMethod">метод, используемый для запроса</param>
-            /// <param name="requestUrl">адрес для запроса</param>
-            /// <param name="requestParameters">параметры запроса</param>
-            /// <param name="consumerInfo">информация о программе клиенте</param>
-            /// <param name="token">токен</param>
+            /// <param name="httpMethod">
+            ///     метод, используемый для запроса
+            /// </param>
+            /// <param name="requestUrl">
+            ///     адрес для запроса
+            /// </param>
+            /// <param name="requestParameters">
+            ///     параметры запроса
+            /// </param>
+            /// <param name="consumerInfo">
+            ///     информация о программе клиенте
+            /// </param>
+            /// <param name="token">
+            ///     токен
+            /// </param>
             /// <exception cref="ArgumentNullException"></exception>
             /// <exception cref="ArgumentOutOfRangeException"></exception>
             /// <returns>
@@ -31,7 +41,7 @@ namespace OAuth
             public static string Sign(HttpMethods httpMethod, string requestUrl,
                 List<RequestParameter> requestParameters,
                 ConsumerInfo consumerInfo,
-                OAuthBroker.OAuthToken token)
+                OAuthToken token)
             {
                 if (consumerInfo.CallbackUrl == null && consumerInfo.ConsumerKey == null &&
                     consumerInfo.ConsumerSecret == null) throw new ArgumentNullException("consumerInfo");
@@ -55,7 +65,6 @@ namespace OAuth
 #if DEBUG
                 Debug.WriteLine(string.Format("Подписываемая строка {0}", baseRequestString));
 #endif
-
                 // Определяем ключ для подписи
                 var baseKey = token == null
                     ? consumerInfo.ConsumerSecret + "&" + string.Empty
@@ -73,7 +82,7 @@ namespace OAuth
                 /* Формируем подписанную строку запроса */
 
                 // Для формирования стоки запроса к параметрам добавляем параметр с цифровой подписью
-                requestParameters.Add(new RequestParameter(OAuthBroker.OAuthParam.Signature,
+                requestParameters.Add(new RequestParameter(OAuthParam.Signature,
                     NormalizeParameter(sigmature)));
                 // формируем строку
                 var signedUrlString = requestUrl + "?" +
@@ -89,7 +98,9 @@ namespace OAuth
             /// <summary>
             ///     Нормализует значение параметра
             /// </summary>
-            /// <param name="str">строка параметра</param>
+            /// <param name="str">
+            ///     строка параметра
+            /// </param>
             /// <returns>
             ///     нормализованная строка параметра
             /// </returns>
@@ -98,7 +109,9 @@ namespace OAuth
             /// <summary>
             ///     Нормализует параметры запроса
             /// </summary>
-            /// <param name="requestParameters"></param>
+            /// <param name="requestParameters">
+            ///     параметры запроса
+            /// </param>
             /// <returns>
             ///     список нормализованных параметров запроса
             /// </returns>
