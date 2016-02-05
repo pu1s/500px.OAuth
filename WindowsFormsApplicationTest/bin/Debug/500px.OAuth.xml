@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>500px.OAuth</name>
+    </assembly>
+    <members>
+        <member name="T:OAuth.OAuthBroker">
+            <summary>
+                Объект, представляющий доступ для аутентификации по протоколу OAuth 1.0
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBroker.Comparer">
+            <summary>
+                Компраматор для сравнения элементов списка
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.Comparer.Compare(OAuth.OAuthBroker.RequestParameter,OAuth.OAuthBroker.RequestParameter)">
+            <summary>
+                Сравнивает 2 параметра
+            </summary>
+            <param name="param1">параметр 1</param>
+            <param name="param2">параметр 2</param>
+            <returns>
+                0 - если строки равны, отрицательное число, если первая сторока меньше второй, положительное число, если
+                наоборот
+            </returns>
+        </member>
+        <member name="T:OAuth.OAuthBroker.ConsumerInfo">
+            <summary>
+                Информация о пользовательском приложении
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.ConsumerInfo.Empty">
+            <summary>
+                "Пустой consumer info"
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.ConsumerInfo.#ctor(System.String,System.String,System.String)">
+            <summary>
+                Хранит информацию о пользовательском приложении
+            </summary>
+            <param name="consumerKey">
+                ключ приложения
+            </param>
+            <param name="consumerSecret">
+                секрет приложения
+            </param>
+            <param name="callbackUrl">
+                валидный Url
+            </param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:OAuth.OAuthBroker.ConsumerInfo.IsEmpty">
+            <summary>
+                возвращает правда, если структура пустая
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.ConsumerInfo.ConsumerKey">
+            <summary>
+                возвращает ключ приложения
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.ConsumerInfo.ConsumerSecret">
+            <summary>
+                возвращает секрет приложения
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.ConsumerInfo.CallbackUrl">
+            <summary>
+                возвращает валидный Url, используемый при аутентификации
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBroker.Core">
+            <summary>
+                Основные функции реализации протокола OAuth 1.0
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.Core.Sign(OAuth.OAuthBroker.HttpMethods,System.String,System.Collections.Generic.List{OAuth.OAuthBroker.RequestParameter},OAuth.OAuthBroker.ConsumerInfo,OAuth.OAuthBroker.OAuthToken)">
+            <summary>
+                Подписывает запрос
+            </summary>
+            <param name="httpMethod">
+                метод, используемый для запроса
+            </param>
+            <param name="requestUrl">
+                адрес для запроса
+            </param>
+            <param name="requestParameters">
+                параметры запроса
+            </param>
+            <param name="consumerInfo">
+                информация о программе клиенте
+            </param>
+            <param name="token">
+                токен
+            </param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <returns>
+                подписанная сторока запроса
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.Core.NormalizeParameter(System.String)">
+            <summary>
+                Нормализует значение параметра
+            </summary>
+            <param name="str">
+                строка параметра
+            </param>
+            <returns>
+                нормализованная строка параметра
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.Core.NormalizeRequestParameters(System.Collections.Generic.List{OAuth.OAuthBroker.RequestParameter})">
+            <summary>
+                Нормализует параметры запроса
+            </summary>
+            <param name="requestParameters">
+                параметры запроса
+            </param>
+            <returns>
+                список нормализованных параметров запроса
+            </returns>
+        </member>
+        <member name="T:OAuth.OAuthBroker.HttpMethods">
+            <summary>
+                Перечисление методов HTTP запроса
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.HttpMethods.Post">
+            <summary>
+                POST
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.HttpMethods.Get">
+            <summary>
+                GET
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.HttpMethods.Put">
+            <summary>
+                PUT
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.HttpMethods.Delete">
+            <summary>
+                DELETE
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBroker.RequestParameter">
+            <summary>
+                Параметр запроса
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.RequestParameter.#ctor(System.String,System.String)">
+            <summary>
+                Конструктор по умолчанию
+            </summary>
+            <param name="name">имя папаметра</param>
+            <param name="value">значение параметра</param>
+        </member>
+        <member name="P:OAuth.OAuthBroker.RequestParameter.Name">
+            <summary>
+                Имя параметра
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.RequestParameter.Value">
+            <summary>
+                Значение параметра
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.#ctor">
+            <summary>
+                Конструктор
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.Token">
+            <summary>
+                Возвращает и задает Токен
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.AccessToken">
+            <summary>
+                Возвращает AccessToken
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.IsAuth">
+            <summary>
+                Возвращает состояние аутентификации
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.IsRegistred">
+            <summary>
+                Возвращает состояние регистрации клиента
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.Consumer">
+            <summary>
+                Возвращает данные пользовательской программы
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.RequestParameters">
+            <summary>
+                Возвращает или задает список параметров запроса
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.RegisterClient(OAuth.OAuthBroker.ConsumerInfo)">
+            <summary>
+                Регистриует клиент атентификации 500px.com
+                <example>
+                    <code>
+            ConsumerInfo consumer = new ConsumerInfo("consumerKey", "consumerSecret", "callbackUrl");
+            OAuthBroker client = new OAuthBroker().RegisterClient("name", consumer);
+                    </code>
+                </example>
+            </summary>
+            <param name="consumerInfo">
+                <see cref="T:OAuth.OAuthBroker.ConsumerInfo" />
+                информация о клиентском приложении
+            </param>
+            <returns>
+                объект клиента аутентификации 500px.com
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.GetRequestTokenAsync">
+            <summary>
+                Получает request token
+            </summary>
+            <returns>
+                задача, получения request token
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.GetAuthorizationUrl(OAuth.OAuthBroker.OAuthToken)">
+            <summary>
+                возвращает строку ресурса для авторизации пользователя
+            </summary>
+            <param name="requestToken">
+                request token
+            </param>
+            <returns>
+                возвращает строку ресурса для авторизации пользователя
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.GetAccessTokenAsync(OAuth.OAuthBroker.OAuthToken)">
+            <summary>
+                Получает Access Token
+            </summary>
+            <param name="requestToken">токен</param>
+            <returns>
+                задача, получения токена
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.GetVerifier(System.Uri)">
+            <summary>
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OAuth.OAuthBroker.OAuthConst">
+            <summary>
+                Константы для создания запроса
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthConst.AccessUrl">
+            <summary>
+                адрес для получения токена доступа к защищенным ресурсам
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthConst.AuthorizeUrl">
+            <summary>
+                адрес для авторизации пользователя
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthConst.RequestUrl">
+            <summary>
+                адрес для получения токена запроса
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthConst.OAuthSignatureMethod">
+            <summary>
+                название метода шифрования подписи
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthConst.OAuthVersion">
+            <summary>
+                версия протокола OAuth
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBroker.OAuthHelpers">
+            <summary>
+                Функции для вычисления переменных параметров запроса
+            </summary>
+        </member>
+        <member name="M:OAuth.OAuthBroker.OAuthHelpers.GenerateNonce">
+            <summary>
+                Вычисляет Nonce
+            </summary>
+            <returns>
+                случайная строка
+            </returns>
+        </member>
+        <member name="M:OAuth.OAuthBroker.OAuthHelpers.GenerateTimeStamp">
+            <summary>
+                Вычисляет промежуток времени от начала исчисления универсального Unix времени до времени генерации запроса в
+                секундах
+            </summary>
+            <returns>
+                строка, представляет количество секунд прошедших от начала времени Unix
+            </returns>
+        </member>
+        <member name="T:OAuth.OAuthBroker.OAuthParam">
+            <summary>
+                Параметры запроса, используемые при OAuth 1.0a аутентификации
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Callback">
+            <summary>
+                валидный Url
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.ConsumerKey">
+            <summary>
+                ключ приложения
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Nonce">
+            <summary>
+                случайная строка 32 бита
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Prefix">
+            <summary>
+                префикс для формирования параметра
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Signature">
+            <summary>
+                подпись
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.SignatureMethod">
+            <summary>
+                метод подписывания запроса
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Timestamp">
+            <summary>
+                интервал времени в секундах от начала времени Unix до формирования текущего запроса
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Token">
+            <summary>
+                Токен
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Verifier">
+            <summary>
+                верификатор
+            </summary>
+        </member>
+        <member name="F:OAuth.OAuthBroker.OAuthParam.Version">
+            <summary>
+                версия OAuth
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBroker.OAuthToken">
+            <summary>
+                Токен, используемый при аутентификации
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.OAuthToken.Token">
+            <summary>
+                Токен
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.OAuthToken.Secret">
+            <summary>
+                Секрет
+            </summary>
+        </member>
+        <member name="P:OAuth.OAuthBroker.OAuthToken.Verifier">
+            <summary>
+                Верификатор
+            </summary>
+        </member>
+        <member name="T:OAuth.Authorization">
+            <summary>
+                Осуществляет запрос авторизации
+            </summary>
+        </member>
+        <member name="M:OAuth.Authorization.RealiseToken(OAuth.OAuthBroker)">
+            <summary>
+                Обновляет Access Token
+            </summary>
+            <param name="broker">
+                экземпляр класса реализации протокола OAuth 1.0
+            </param>
+        </member>
+        <member name="T:OAuth.UI.UserAuthForm">
+            <summary>
+                Форма авторизации пользователя
+            </summary>
+        </member>
+        <member name="M:OAuth.UI.UserAuthForm.#ctor">
+            <summary>
+                конструктор формы авторизации пользователя
+            </summary>
+        </member>
+        <member name="M:OAuth.UI.UserAuthForm.#ctor(OAuth.OAuthBroker,System.String)">
+            <summary>
+                перегруженный конструктор формы авторизации пользователя
+            </summary>
+            <param name="broker">
+                объект авторизации
+            </param>
+            <param name="url">
+                адрес запроса авторизации пользователя
+            </param>
+        </member>
+        <member name="M:OAuth.UI.UserAuthForm.Navigate">
+            <summary>
+                Переход к форме авторизации
+            </summary>
+            <returns>
+                объект формы авторизации
+            </returns>
+        </member>
+        <member name="F:OAuth.UI.UserAuthForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OAuth.UI.UserAuthForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OAuth.UI.UserAuthForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OAuth.UI.UserAuthForm.webBrowser">
+            <summary>
+            Объект компанента браузера
+            </summary>
+        </member>
+    </members>
+</doc>
