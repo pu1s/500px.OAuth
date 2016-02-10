@@ -4,3 +4,4 @@ C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\ob
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Release\500px.OAuth.dll.csproj.GenerateResource.Cache
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Release\500px.OAuth.dll
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Release\500px.OAuth.pdb
+C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Release\500px.OAuth.dll.csprojResolveAssemblyReference.cache
