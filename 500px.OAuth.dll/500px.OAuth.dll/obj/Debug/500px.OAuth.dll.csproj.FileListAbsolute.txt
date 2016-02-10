@@ -8,6 +8,7 @@ D:\Users\alex pu1s\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\bin\Debug\500px.OAuth.XML
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\bin\Debug\500px.OAuth.dll
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\bin\Debug\500px.OAuth.pdb
+C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.dll.csprojResolveAssemblyReference.cache
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\OAuth.UI.UserAuthForm.resources
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.dll.csproj.GenerateResource.Cache
 C:\Users\extensa\Documents\GitHub\500px.OAuth\500px.OAuth.dll\500px.OAuth.dll\obj\Debug\500px.OAuth.dll
