@@ -237,7 +237,9 @@ namespace OAuth
         /// <summary>
         /// </summary>
         /// <param name="url"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// Объект брокера авторизации
+        /// </returns>
         public OAuthBroker GetVerifier(Uri url)
         {
             var urlpart = url.OriginalString.Split('?');

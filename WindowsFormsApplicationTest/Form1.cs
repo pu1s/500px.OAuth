@@ -14,7 +14,7 @@ namespace WindowsFormsApplicationTest
         private static void Authorization(OAuthBroker broker)
         {
             
-            OAuth.Authorization.RealiseToken(broker);
+            OAuth.Authorization.RealiseToken(ref broker);
         }
 
         private void button1_Click(object sender, System.EventArgs e)

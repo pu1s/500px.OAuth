@@ -254,7 +254,9 @@
             <summary>
             </summary>
             <param name="url"></param>
-            <returns></returns>
+            <returns>
+            Объект брокера авторизации
+            </returns>
         </member>
         <member name="T:OAuth.OAuthBroker.OAuthConst">
             <summary>
@@ -388,7 +390,7 @@
                 Осуществляет запрос авторизации
             </summary>
         </member>
-        <member name="M:OAuth.Authorization.RealiseToken(OAuth.OAuthBroker)">
+        <member name="M:OAuth.Authorization.RealiseToken(OAuth.OAuthBroker@)">
             <summary>
                 Обновляет Access Token
             </summary>

@@ -16,7 +16,7 @@ namespace OAuth
         /// <param name="broker">
         ///     экземпляр класса реализации протокола OAuth 1.0
         /// </param>
-        public static void RealiseToken(OAuthBroker broker)
+        public static void RealiseToken(ref OAuthBroker broker)
         {
             _broker = broker;
             // асинхронный запрос токена
@@ -24,9 +24,17 @@ namespace OAuth
             // получение строки адреса авторизации пользователя
             var url = _broker.GetAuthorizationUrl(_broker.Token);
             // вызов формы авторизации пользователя
-            var form = new UserAuthForm(_broker, url);
-            // показываем форму
-            form.Navigate();
+
+            Task.Run(() =>
+            {
+                UserAuthForm form = new UserAuthForm();
+                form.Navigate();
+                if (!string.IsNullOrEmpty(_broker.Token.Verifier)) form.Close();
+            }).GetAwaiter();
+
+
+           
+           
             // асинхронный запрос Access Token
             _broker.AccessToken =
                 Task.Run(async () => await _broker.GetAccessTokenAsync(_broker.Token)).GetAwaiter().GetResult();

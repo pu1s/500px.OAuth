@@ -46,7 +46,8 @@ namespace OAuth.UI
         {
             webBrowser.Navigate(_url);
             // открываем модальное окно
-            ShowDialog();
+            // TODO Решение вопроса о том, как закрыть форму автоматически
+            Show();
 
             return this;
         }
@@ -56,7 +57,9 @@ namespace OAuth.UI
 #if DEBUG
             Debug.WriteLine(e.Url.OriginalString);
 #endif
-            _broker.GetVerifier(e.Url);
+
+                // TODO Автоматически закрыть форму
+                _broker.GetVerifier(e.Url);
         }
     }
 }
